@@ -31,5 +31,8 @@
 *.out
 *.app
 
-# CMake
+# Additons
 build/
+.vscode/
+assets/*.png
+assets/*.jpg
