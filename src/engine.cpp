@@ -6,6 +6,7 @@
 #include "graphics/textureManager.h"
 #include "characters/warrior.h"
 #include "input/eventHandler.h"
+#include "timer/timer.h"
 
 Engine* Engine::s_Instance = nullptr;
 Warrior* player = nullptr;
@@ -36,6 +37,9 @@ bool Engine::init() {
   }
 
   textureManager::getInstance()->loadTexture("player", "/media/Downloads/Cute_Fantasy_Free/Player/Player.png");
+  textureManager::getInstance()->loadTexture("player_run_x", "/media/Downloads/Cute_Fantasy_Free/Player/Player.png");
+  textureManager::getInstance()->loadTexture("player_run_y", "/media/Downloads/Cute_Fantasy_Free/Player/Player.png");
+
   player = new Warrior(new Properties("player", 100, 200, 32, 32));
 
   return m_IsRunning = true;
@@ -58,10 +62,8 @@ void Engine::quit() {
 };
 
 void Engine::update() {
-  if (EventHandler::getInstance()->getKeyDown(SDL_SCANCODE_A)) {
-    SDL_Log("A key pressed");
-  };
-  player->update(0);
+  float deltaTime = Timer::getInstance()->getDeltaTime();
+  player->update(deltaTime);
 };
 
 void Engine::render() {

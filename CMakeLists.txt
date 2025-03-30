@@ -28,7 +28,10 @@ add_executable(${PROJECT_NAME} ${SOURCES}
         include/animation/animation.h
         include/physics/rigidBody.h
         src/eventHandler.cpp
-        include/input/eventHandler.h)
+        include/input/eventHandler.h
+        src/timer.cpp
+        include/timer/timer.h
+)
 set_target_properties(${PROJECT_NAME} PROPERTIES 
     OUTPUT_NAME ${PROJECT_NAME}
     COMPILE_FLAGS "${CMAKE_CXX_FLAGS_RELEASE}")
